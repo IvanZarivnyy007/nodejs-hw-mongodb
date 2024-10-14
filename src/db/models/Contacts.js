@@ -28,4 +28,4 @@ const contactSchema = new Schema(
   { timestamps: true },
 );
 
-export const Contact = model('Contact', contactSchema);
+export const ContactCollection = model('Contact', contactSchema);
