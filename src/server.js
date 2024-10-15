@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import logger from 'pino-http';
+import dotenv from 'dotenv';
 
 import { notFound } from './middlewares/notFound.js';
-import { mainRouter } from './routes/index.js';
+import mainRouter from './routes/index.js';
 import { initMongoConnection } from './db/models/initMongoConnection.js';
 
 const setupServer = async () => {
@@ -21,9 +22,15 @@ const setupServer = async () => {
 
   app.use(notFound);
 
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  dotenv.config();
+  const PORT = process.env.PORT || 3000;
+
+  app.listen(
+    (PORT,
+    () => {
+      console.log(`Server is running on port ${PORT}`);
+    }),
+  );
 };
 
 setupServer();

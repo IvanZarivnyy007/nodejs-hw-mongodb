@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { env } from '../../utils/evn.js';
+import { env } from '../../../utils/evn.js';
 
 export const initMongoConnection = async () => {
   try {
@@ -11,6 +11,7 @@ export const initMongoConnection = async () => {
     await mongoose.connect(
       `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`,
     );
+
     console.log('Mongo connection successfully established!');
   } catch (e) {
     console.log('Error while setting up mongo connection', e);
