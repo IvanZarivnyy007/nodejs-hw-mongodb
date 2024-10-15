@@ -1,6 +1,10 @@
 import setupServer from './index.js';
 import initMongoConnection from './db/initMongoConnection.js';
 
-setupServer();
+const root = () => {
+  setupServer();
 
-initMongoConnection();
+  initMongoConnection();
+};
+
+export default root;

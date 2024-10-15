@@ -7,6 +7,8 @@ import { notFound } from './middlewares/notFound.js';
 import mainRouter from './routes/index.js';
 import { initMongoConnection } from './db/models/initMongoConnection.js';
 
+dotenv.config();
+
 const setupServer = async () => {
   const app = express();
 
@@ -22,15 +24,11 @@ const setupServer = async () => {
 
   app.use(notFound);
 
-  dotenv.config();
   const PORT = process.env.PORT || 3000;
 
-  app.listen(
-    (PORT,
-    () => {
-      console.log(`Server is running on port ${PORT}`);
-    }),
-  );
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 };
 
 setupServer();

@@ -5,6 +5,7 @@ import {
 
 export const getContactsController = async (req, res, next) => {
   try {
+    const body = req.body;
     const result = await contactAllService();
     res.status(200).json({
       status: 'Successfully found contacts!',
