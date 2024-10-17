@@ -1,10 +1,10 @@
-import setupServer from './index.js';
-import initMongoConnection from './db/initMongoConnection.js';
+import { setupServer } from './server.js';
+import { initMongoConnection } from './db/initMongoConnection.js';
 
-const root = () => {
+const root = async () => {
+  await initMongoConnection();
+
   setupServer();
-
-  initMongoConnection();
 };
 
-export default root;
+root();

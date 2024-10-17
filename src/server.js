@@ -5,14 +5,12 @@ import dotenv from 'dotenv';
 
 import { notFound } from './middlewares/notFound.js';
 import mainRouter from './routes/index.js';
-import { initMongoConnection } from './db/models/initMongoConnection.js';
 
 dotenv.config();
+const PORT = process.env.PORT || 3000;
 
-const setupServer = async () => {
+export const setupServer = () => {
   const app = express();
-
-  await initMongoConnection();
 
   app.use(express.json());
 
@@ -22,13 +20,13 @@ const setupServer = async () => {
 
   app.use(mainRouter);
 
-  app.use(notFound);
+  app.use('*', notFound);
 
-  const PORT = process.env.PORT || 3000;
+  app.use((error, req, res, next) => {
+    res.status(500).json({ message: 'Error', error: error.message });
+  });
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 };
-
-setupServer();

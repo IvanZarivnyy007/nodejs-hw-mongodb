@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { env } from '../../../utils/evn.js';
+import { env } from '../../utils/evn.js';
 
 export const initMongoConnection = async () => {
   try {

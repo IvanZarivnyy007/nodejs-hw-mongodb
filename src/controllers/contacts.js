@@ -1,11 +1,10 @@
 import {
   contactAllService,
   contactFindIdService,
-} from '../../services/contacts.js';
+} from '../services/contacts.js';
 
 export const getContactsController = async (req, res, next) => {
   try {
-    const body = req.body;
     const result = await contactAllService();
     res.status(200).json({
       status: 'Successfully found contacts!',
@@ -26,7 +25,7 @@ export const getContactsByIdController = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: 'Successfully found contact with id {contactId}!',
+      message: `Successfully found contact with id ${contactId}!`,
       data: result,
     });
   } catch (error) {

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import {
   getContactsController,
   getContactsByIdController,
-} from '../db/controllers/contacts.js';
+} from '../controllers/contacts.js';
 
 const contactsRouter = Router();
 
