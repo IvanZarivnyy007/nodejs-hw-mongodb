@@ -7,3 +7,15 @@ export const contactAllService = () => {
 export const contactFindIdService = (contactId) => {
   return ContactCollection.findById(contactId);
 };
+
+export const contactCreateIdService = (data) => {
+  return ContactCollection.create(data);
+};
+
+export const contactUpdateIdService = (id, data) => {
+  return ContactCollection.findByIdAndUpdate(id, data);
+};
+
+export const contactDeleteService = (id) => {
+  return ContactCollection.findByIdAndDelete(id);
+};
