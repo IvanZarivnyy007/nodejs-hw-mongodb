@@ -3,7 +3,6 @@ import cors from 'cors';
 import logger from 'pino-http';
 import dotenv from 'dotenv';
 
-import { notFound } from './middlewares/notFound.js';
 import mainRouter from './routes/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -22,14 +21,9 @@ export const setupServer = () => {
 
   app.use(mainRouter);
 
-  app.use('*', notFound);
+  app.use('*', notFoundHandler);
 
   app.use(errorHandler);
-
-  app.use(notFoundHandler);
-  // app.use((error, req, res, next) => {
-  //   res.status(500).json({ message: 'Error', error: error.message });
-  // });
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
