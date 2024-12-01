@@ -12,7 +12,8 @@ export const getContactsController = async (req, res, next) => {
   try {
     const result = await contactAllService();
     res.status(200).json({
-      status: 'Successfully found contacts!',
+      status: 200,
+      message: 'Successfully found contacts!',
       data: result,
     });
   } catch (error) {
@@ -25,7 +26,8 @@ export const createContactsController = async (req, res, next) => {
     const data = req.body;
     const result = await contactCreateIdService(data);
     res.status(201).json({
-      status: 'Successfully created a contact!!',
+      status: 201,
+      message: 'Successfully found contacts!',
       data: result,
     });
   } catch (error) {
@@ -36,19 +38,17 @@ export const updateContactsController = async (req, res, next) => {
   try {
     const data = req.body;
     const id = req.params.id;
-    console.log(id);
     const result = await contactUpdateIdService(id, data);
-    console.log(result);
     if (!result) {
       next(HttpError(404, 'Contact not found'));
     } else {
       res.status(200).json({
-        status: 'Successfully patched a contact',
+        status: 200,
+        message: 'Successfully found contacts!',
         data: result,
       });
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -62,7 +62,8 @@ export const deleteContactsController = async (req, res, next) => {
       return;
     }
     res.status(204).json({
-      status: 'Successfully patched a contact',
+      status: 200,
+      message: 'Successfully patched a contact!',
       data: result,
     });
   } catch (error) {
@@ -81,6 +82,7 @@ export const getContactsByIdController = async (req, res, next) => {
       return;
     }
     res.status(200).json({
+      status: 200,
       message: `Successfully found contact with id ${contactId}!`,
       data: result,
     });
