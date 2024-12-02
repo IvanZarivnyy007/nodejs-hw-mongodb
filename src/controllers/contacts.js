@@ -44,7 +44,7 @@ export const updateContactsController = async (req, res, next) => {
     } else {
       res.status(200).json({
         status: 200,
-        message: 'Successfully found contacts!',
+        message: 'Successfully patched a contact!',
         data: result,
       });
     }
