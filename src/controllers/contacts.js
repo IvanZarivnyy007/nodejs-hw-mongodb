@@ -39,6 +39,7 @@ export const updateContactsController = async (req, res, next) => {
     const data = req.body;
     const id = req.params.id;
     const result = await contactUpdateIdService(id, data);
+
     if (!result) {
       next(HttpError(404, 'Contact not found'));
     } else {
@@ -47,6 +48,7 @@ export const updateContactsController = async (req, res, next) => {
         message: 'Successfully patched a contact!',
         data: result,
       });
+      console.log('Result from contactUpdateIdService:', result);
     }
   } catch (error) {
     next(error);
