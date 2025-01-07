@@ -19,8 +19,8 @@ export const contactAllService = async ({
   const paginationData = calculatePaginationData({ totalItems, page, perPage });
 
   return {
-    page,
     data: totalPages,
+    page,
     perPage,
     totalPages,
     totalItems,
