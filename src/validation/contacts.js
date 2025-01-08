@@ -2,14 +2,15 @@ import Joi from 'joi';
 import { typeList, minLetters, maxLetters } from '../constants/contacts.js';
 
 export const contactsAddSchema = Joi.object({
-  name: Joi.string().min(minLetters).max(maxLetters).required,
-  phoneNumber: Joi.number().required,
-  email: Joi.string().min(minLetters).max(maxLetters).required,
-  isFavourite: Joi.boolean().required,
+  name: Joi.string().min(minLetters).max(maxLetters).required(),
+  phoneNumber: Joi.string().required(),
+  email: Joi.string().min(minLetters).max(maxLetters).email().required(),
+  isFavourite: Joi.boolean().required(),
   contactType: Joi.string()
     .min(minLetters)
     .max(maxLetters)
-    .valid(...typeList).required,
+    .valid(...typeList)
+    .required(),
 });
 
 export const contactsUpdateSchema = Joi.object({

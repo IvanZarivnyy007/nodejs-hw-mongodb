@@ -2,7 +2,7 @@ const sortOrderList = ['asc', 'desc'];
 
 export const parseSortParams = ({ sortBy, sortOrder }, sortByList) => {
   const parseSortOrder = sortOrderList.includes(sortOrder)
-    ? sortOrderList
+    ? sortOrder
     : sortOrderList[0];
 
   const parseSortBy = sortByList.includes(sortBy) ? sortBy : '_id';
