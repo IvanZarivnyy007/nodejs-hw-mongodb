@@ -17,7 +17,10 @@ export const getContactsController = async (req, res, next) => {
     const { page, perPage } = parsePaginationParams(req.query);
     const { sortBy, sortOrder } = parseSortParams(req.query, sortByList);
 
+    const userId = req.user._id;
+
     const result = await contactAllService({
+      userId,
       page,
       perPage,
       sortBy,
@@ -34,9 +37,11 @@ export const getContactsController = async (req, res, next) => {
 };
 
 export const createContactsController = async (req, res, next) => {
+  const { _id: userId } = req.user;
+
   try {
     const data = req.body;
-    const result = await contactCreateIdService(data);
+    const result = await contactCreateIdService({ userId, ...data });
     res.status(201).json({
       status: 201,
       message: 'Successfully found contacts!',
@@ -89,7 +94,8 @@ export const deleteContactsController = async (req, res, next) => {
 export const getContactsByIdController = async (req, res, next) => {
   try {
     const contactId = req.params.id;
-    const result = await contactFindIdService(contactId);
+    const userId = req.user._id;
+    const result = await contactFindIdService(userId, contactId);
     console.log(result);
 
     if (!result) {

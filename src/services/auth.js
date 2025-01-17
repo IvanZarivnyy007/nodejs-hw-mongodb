@@ -44,3 +44,7 @@ export const login = async ({ email, password }) => {
     refreshTokenValidUntil: Date.now() + refreshTokenTime,
   });
 };
+
+export const getSession = (filter) => SessionColection.findOne(filter);
+
+export const getUser = (filter) => UserCollection.findOne(filter);
