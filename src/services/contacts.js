@@ -38,14 +38,14 @@ export const contactCreateIdService = (userId, data) => {
   return ContactCollection.create({ ...data, userId });
 };
 
-export const contactUpdateIdService = async (id, data) => {
-  const result = await ContactCollection.findOneAndUpdate({ _id: id }, data, {
+export const contactUpdateIdService = async (filters, data) => {
+  const result = await ContactCollection.findOneAndUpdate(filters, data, {
     new: true,
   });
   if (!result) return null;
   return result;
 };
 
-export const contactDeleteService = (id) => {
-  return ContactCollection.findByIdAndDelete(id);
+export const contactDeleteService = (filters) => {
+  return ContactCollection.findOneAndDelete(filters);
 };

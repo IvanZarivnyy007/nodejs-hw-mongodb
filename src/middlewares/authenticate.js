@@ -4,7 +4,7 @@ import { getSession, getUser } from '../services/auth.js';
 export const authenticate = async (req, res, next) => {
   const authHeader = req.get('Authorization');
   if (!authHeader) {
-    return next(HttpError(401, 'Access token expired'));
+    return next(HttpError(401, 'Access token invalid'));
   }
 
   const [bearer, accessToken] = authHeader.split(' ');
@@ -26,7 +26,7 @@ export const authenticate = async (req, res, next) => {
     return next(HttpError(401, 'User not found'));
   }
 
-  next();
-
   req.user = user;
+
+  next();
 };
