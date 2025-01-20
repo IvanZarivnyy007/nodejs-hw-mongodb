@@ -8,6 +8,7 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
 import authRouter from './routes/auth.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 3000;
 export const setupServer = () => {
   const app = express();
 
+  app.use(cookieParser());
   app.use(express.json());
 
   app.use('/auth', authRouter);

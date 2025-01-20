@@ -3,6 +3,7 @@ import UserCollection from '../db/models/User.js';
 import { hashPassword } from './../constants/hash.js';
 import { randomBytes } from 'crypto';
 import HttpError from 'http-errors';
+import bcrypt from 'bcrypt';
 
 import { accessTokenTime, refreshTokenTime } from '../constants/users.js';
 
