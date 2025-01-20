@@ -25,7 +25,7 @@ export const register = async (payload) => {
     throw HttpError(409, 'Email in use.');
   }
 
-  const res = hashPassword(password);
+  const res = await hashPassword(password);
 
   const newUser = await UserCollection.create({ ...payload, password: res });
 
