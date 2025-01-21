@@ -34,8 +34,8 @@ export const contactFindIdService = async (userId, contactId) => {
   return contact;
 };
 
-export const contactCreateIdService = (userId, data) => {
-  return ContactCollection.create({ ...data, userId });
+export const contactCreateIdService = (data) => {
+  return ContactCollection.create(data);
 };
 
 export const contactUpdateIdService = async (filters, data) => {
