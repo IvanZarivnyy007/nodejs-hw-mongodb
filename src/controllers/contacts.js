@@ -39,9 +39,8 @@ export const getContactsController = async (req, res, next) => {
 
 export const createContactsController = async (req, res, next) => {
   const { _id: userId } = req.user;
-  console.log('---------------------------');
+
   const photo = req.file;
-  console.log(photo);
 
   let photoUrl;
   if (photo) {

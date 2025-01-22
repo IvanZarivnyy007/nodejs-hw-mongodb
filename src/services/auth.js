@@ -102,9 +102,8 @@ export const requestResetToken = async (email) => {
 
   const markup = `
   <div>
-  <h1>Reset Password</h1>
-  <a href= "${url}">Click for reset</a>
-  <p>${token}</p>
+  Click
+  <a href= "${url}">here</a> to reset your password!
   </div>`;
 
   console.log(email);
