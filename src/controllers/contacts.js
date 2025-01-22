@@ -11,6 +11,7 @@ import {
 import { parsePaginationParams } from './../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { sortByList } from '../db/models/Contacts.js';
+import { saveImage } from '../utils/saveImage.js';
 
 export const getContactsController = async (req, res, next) => {
   try {
@@ -38,10 +39,22 @@ export const getContactsController = async (req, res, next) => {
 
 export const createContactsController = async (req, res, next) => {
   const { _id: userId } = req.user;
+  console.log('---------------------------');
+  const photo = req.file;
+  console.log(photo);
+
+  let photoUrl;
+  if (photo) {
+    photoUrl = await saveImage(photo);
+  }
 
   try {
     const data = req.body;
-    const result = await contactCreateIdService({ userId, ...data });
+    const result = await contactCreateIdService({
+      userId,
+      ...data,
+      photo: photoUrl,
+    });
     res.status(201).json({
       status: 201,
       message: 'Successfully found contacts!',
@@ -54,10 +67,19 @@ export const createContactsController = async (req, res, next) => {
 
 export const updateContactsController = async (req, res, next) => {
   const { _id: userId } = req.user;
+  const photo = req.file;
+  let photoUrl;
+  if (photo) {
+    photoUrl = await saveImage(photo);
+  }
+
   try {
     const data = req.body;
     const id = req.params.id;
-    const result = await contactUpdateIdService({ _id: id, userId }, data);
+    const result = await contactUpdateIdService(
+      { _id: id, userId },
+      { ...data, photo: photoUrl },
+    );
 
     if (!result) {
       next(HttpError(404, 'Contact not found'));

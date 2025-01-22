@@ -1,13 +1,13 @@
 import { HttpError } from 'http-errors';
 import nodemailer from 'nodemailer';
-import { env } from './evn';
+import { env } from './evn.js';
 
 const emailObject = nodemailer.createTransport({
-  host: env('BREVO_HOST'),
-  port: env('BREVO_PORT'),
+  host: env('SMTP_HOST'),
+  port: env('SMTP_PORT'),
   auth: {
-    user: env('BREVO_USER'),
-    pass: env('BREVO_PASS'),
+    user: env('SMTP_USER'),
+    pass: env('SMTP_PASS'),
   },
 });
 

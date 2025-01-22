@@ -9,7 +9,6 @@ import { accessTokenTime, refreshTokenTime } from '../constants/users.js';
 import jwt from 'jsonwebtoken';
 import { env } from '../utils/evn.js';
 import { sendEmail } from '../utils/sendEmail.js';
-import UserCollection from './../db/models/User';
 
 const createSession = () => {
   const accessToken = randomBytes(30).toString('base64');
@@ -108,8 +107,10 @@ export const requestResetToken = async (email) => {
   <p>${token}</p>
   </div>`;
 
+  console.log(email);
+
   await sendEmail({
-    from: 'ivano@gmail.com',
+    from: env('SMTP_FROM'),
     to: email,
     subject: 'Reset Password',
     html: markup,
