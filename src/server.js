@@ -9,6 +9,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
 import authRouter from './routes/auth.js';
 import cookieParser from 'cookie-parser';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,8 @@ export const setupServer = () => {
   app.use(express.json());
 
   app.use('/auth', authRouter);
+
+  app.use('/api-docs', swaggerDocs());
 
   app.use(cors());
 

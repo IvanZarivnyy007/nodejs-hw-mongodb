@@ -1,0 +1,53 @@
+tags:
+  - auth
+sumary: User register
+operationId: UserRegister
+description: User Registration
+security: []
+
+requestBody: 
+  content: 
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - email
+          - password
+        properties: 
+          name:
+            description: Enter your Name
+            type: string
+            example: Niko Weg
+          email:
+            description: Enter your Email
+            type: string
+            example: qwerty2025@gmail.com
+          password:
+            description: Enter your Password
+            type: string
+            example: qwrrtyu2025
+
+
+response:
+  201:
+    description: Success register
+    content: 
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties: 
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Success register
+            data:
+              type: string
+              exemple: Hello World
+
