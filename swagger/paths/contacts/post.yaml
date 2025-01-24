@@ -1,0 +1,119 @@
+tags:
+  - Contacts
+summary: Create a new contact
+operationId: createContact
+description: Create a new contact for the authenticated user.
+security:
+  - bearerAuth: [] 
+
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - email
+        properties:
+          name:
+            type: string
+            description: Name of the contact.
+            example: John Doe
+          email:
+            type: string
+            description: Email address of the contact.
+            example: johndoe@example.com
+          phoneNumber:
+            type: string
+            description: Phone number of the contact.
+            example: "+1234567890"
+          isFavourite:
+            type: boolean
+            description: Whether the contact is marked as favorite.
+            example: false
+          photo:
+            type: string
+            format: binary
+            description: Profile picture of the contact.
+
+responses:
+  201:
+    description: Successfully created a new contact.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a new contact!
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique identifier for the contact.
+                  example: "63f1c8f1d2a5b9e1a87f3c1a"
+                name:
+                  type: string
+                  description: Name of the contact.
+                  example: John Doe
+                email:
+                  type: string
+                  description: Email of the contact.
+                  example: johndoe@example.com
+                phoneNumber:
+                  type: string
+                  description: Phone number of the contact.
+                  example: "+1234567890"
+                isFavourite:
+                  type: boolean
+                  description: Whether the contact is marked as favorite.
+                  example: true
+                photo:
+                  type: string
+                  description: URL of the uploaded photo.
+                  example: "https://example.com/photos/contact-photo.jpg"
+  400:
+    description: Bad request. Missing or invalid input data.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: Bad Request
+  401:
+    description: Unauthorized. The user must be authenticated to access this endpoint.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: Unauthorized
+  500:
+    description: Internal Server Error.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 500
+            message:
+              type: string
+              example: Internal Server Error

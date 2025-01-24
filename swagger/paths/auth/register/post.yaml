@@ -1,6 +1,6 @@
 tags:
   - Auth
-sumary: User register
+summary: User register
 operationId: UserRegister
 description: User Registration
 security: []
@@ -28,10 +28,9 @@ requestBody:
             type: string
             example: qwrrtyu2025
 
-
-response:
+responses:
   201:
-    description: Success register
+    description: Successfully registered a user!
     content: 
       application/json:
         schema:
@@ -46,8 +45,19 @@ response:
               example: 201
             message:
               type: string
-              example: Success register
+              example: Successfully registered a user!
             data:
-              type: string
-              exemple: Hello World
-
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique identifier of the user
+                  example: "64a1f59fcd5e9a1234567890"
+                name:
+                  type: string
+                  description: Name of the registered user
+                  example: "Niko Weg"
+                email:
+                  type: string
+                  description: Email of the registered user
+                  example: "qwerty2025@gmail.com"

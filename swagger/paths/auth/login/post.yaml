@@ -1,8 +1,8 @@
 tags:
-  - auth
-sumary: User register
-operationId: UserRegister
-description: User Registration
+  - Auth
+summary: User Login
+operationId: UserLogin
+description: User Login
 security: []
 
 requestBody: 
@@ -11,14 +11,9 @@ requestBody:
       schema:
         type: object
         required:
-          - name
           - email
           - password
         properties: 
-          name:
-            description: Enter your Name
-            type: string
-            example: Niko Weg
           email:
             description: Enter your Email
             type: string
@@ -28,10 +23,9 @@ requestBody:
             type: string
             example: qwrrtyu2025
 
-
-response:
-  201:
-    description: Success register
+responses:
+  200:
+    description: Successfully logged in the user!
     content: 
       application/json:
         schema:
@@ -43,11 +37,18 @@ response:
           properties: 
             status:
               type: integer
-              example: 201
+              example: 200
             message:
               type: string
-              example: Success register
+              example: Successfully logged in the user!
             data:
-              type: string
-              exemple: Hello World
-
+              type: object
+              properties:
+                accessToken:
+                  type: string
+                  description: Access token for the user
+                  example: "Hello Kitty"
+                refreshToken:
+                  type: string
+                  description: Refresh token for the user
+                  example: "Hello Kitty"

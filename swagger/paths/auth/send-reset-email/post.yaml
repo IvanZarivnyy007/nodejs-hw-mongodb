@@ -1,0 +1,34 @@
+tags:
+  - Auth
+summary: Send Reset Email
+operationId: Send Reset Email
+description: Send Reset Email
+security: []
+
+requestBody: 
+  content: 
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+        properties: 
+          email:
+            description: Enter your Email
+            type: string
+            example: qwerty2025@gmail.com
+
+responses:
+  200:
+    description: Reset password email has been successfully sent.
+    content: 
+      application/json:
+        schema:
+          type: object
+          properties: 
+            status:
+              type: string
+              example: 200
+            message:
+              type: string
+              example: Reset password email has been successfully sent.

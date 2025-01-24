@@ -1,0 +1,131 @@
+tags:
+  - Contacts
+summary: Get list of contacts
+operationId: getContacts
+description: Get list of contacts
+security:
+  - bearerAuth: [] 
+
+parameters:
+  - name: page
+    in: query
+    description: Page number for pagination.
+    required: false
+    schema:
+      type: integer
+      example: 1
+  - name: perPage
+    in: query
+    description: Number of items per page.
+    required: false
+    schema:
+      type: integer
+      example: 10
+  - name: sortBy
+    in: query
+    description: Field to sort by.
+    required: false
+    schema:
+      type: string
+      example: name
+  - name: sortOrder
+    in: query
+    description: Order of sorting (asc or desc).
+    required: false
+    schema:
+      type: string
+      enum: [asc, desc]
+      example: asc
+
+responses:
+  200:
+    description: Successfully retrieved list of contacts.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found contacts!
+            data:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the contact.
+                        example: "63f1c8f1d2a5b9e1a87f3c1a"
+                      name:
+                        type: string
+                        description: Name of the contact.
+                        example: John Doe
+                      email:
+                        type: string
+                        description: Email of the contact.
+                        example: johndoe@example.com
+                      phoneNumber:
+                        type: string
+                        description: Phone number of the contact.
+                        example: "+1234567890"
+                      isFavourite:
+                        type: boolean
+                        description: Whether the contact is marked as favorite.
+                        example: true
+                page:
+                  type: integer
+                  description: Current page number.
+                  example: 1
+                perPage:
+                  type: integer
+                  description: Number of items per page.
+                  example: 10
+                totalPages:
+                  type: integer
+                  description: Total number of pages.
+                  example: 5
+                totalItems:
+                  type: integer
+                  description: Total number of contacts.
+                  example: 50
+                hasNextPage:
+                  type: boolean
+                  description: Whether there is a next page.
+                  example: true
+                hasPreviosPage:
+                  type: boolean
+                  description: Whether there is a previous page.
+                  example: false
+  401:
+    description: Unauthorized. The user must be authenticated to access this endpoint.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: Unauthorized
+  500:
+    description: Internal Server Error.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 500
+            message:
+              type: string
+              example: Internal Server Error

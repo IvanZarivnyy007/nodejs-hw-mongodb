@@ -1,0 +1,21 @@
+tags:
+  - Auth
+summary: User Logout
+operationId: UserLogout
+description: User Logout
+security: []
+
+responses:
+  200:
+    description: Successfully logged out the user!
+    content: 
+      application/json:
+        schema:
+          type: object
+          properties: 
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged out.
