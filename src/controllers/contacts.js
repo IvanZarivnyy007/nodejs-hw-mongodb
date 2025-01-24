@@ -136,3 +136,13 @@ export const getContactsByIdController = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getGoogleAuthUrl = async (req, res) => {
+  res.json({
+    status: 200,
+    message: `Successfully get Google OAuth url!`,
+    data: {
+      url,
+    },
+  });
+};

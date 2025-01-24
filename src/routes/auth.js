@@ -39,4 +39,6 @@ authRouter.post(
   ctrlWrapper(authController.resetPwd),
 );
 
+authRouter.get('/get-oauth-url', ctrlWrapper(authController.getGoogleAuthUrl));
+
 export default authRouter;
