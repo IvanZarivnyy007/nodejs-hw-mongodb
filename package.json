@@ -7,7 +7,7 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "preview-docs": "redocly preview-docs",
-    "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json"
+    "build": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json"
   },
   "keywords": [],
   "author": "",

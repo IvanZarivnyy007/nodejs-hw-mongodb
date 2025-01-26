@@ -14,7 +14,8 @@ tags:
     description: Contacts orepation
 servers:
   - url: http://localhost:3000
-  # - url: #посилання на задеплоєний сайт
+  - url: https://hw7-swagger-w47z.onrender.com
+
 paths:
   /auth/register:
     post:
