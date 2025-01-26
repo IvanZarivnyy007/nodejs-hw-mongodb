@@ -11,12 +11,17 @@ requestBody:
       schema:
         type: object
         required:
-          - email
+          - token
+          - password
         properties: 
-          email:
-            description: Enter your Email
+          token:
+            description: Enter jwt token
             type: string
-            example: qwerty2025@gmail.com
+            example: "sdvaiqj456ecdcr.dwefrefrefre.frefewfre"
+          password:
+            description: Enter new password
+            type: string
+            example: qwerty2025
 
 responses:
   200:

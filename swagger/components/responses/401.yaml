@@ -1,0 +1,19 @@
+
+description: The user must be authenticated to access this endpoint.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 401
+        message:
+          type: string
+          example: UnauthorizedError
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Access token expired

@@ -1,0 +1,19 @@
+
+description: Internal Server Error.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Something went wrong
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              example: Expected double-quoted property name in JSON at position 69

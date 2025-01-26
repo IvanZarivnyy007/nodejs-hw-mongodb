@@ -1,0 +1,52 @@
+type: object
+properties:
+  _id:
+    type: string
+    description: id
+    required: true
+    example: "63f1b02a7c8b9c4d5a7e5f92"
+  name:
+    type: string
+    description: Name of the contact
+    required: true
+    example: "John Doe"
+  phoneNumber:
+    type: string
+    description: Phone number of the contact
+    required: true
+    example: "+1234567890"
+  email:
+    type: string
+    description: Email of the contact
+    default: false
+    example: "john.doe@example.com"
+  isFavourite:
+    type: boolean
+    description: Whether the contact is marked as favourite
+    default: false
+    example: true
+  contactType:
+    type: string
+    description: Type of the contact (e.g., personal, work)
+    enum:
+      - personal
+      - work
+      - other
+    default: personal
+    required: true
+    example: "work"
+  userId:
+    type: string
+    description: User ID associated with the contact
+    format: objectId
+    required: true
+    example: "63f1b02a7c8b9c4d5a7e5f93"
+  photo:
+    type: string
+    description: URL or path to the contact's photo
+    example: "https://example.com/photos/john_doe.jpg"
+required:
+  - name
+  - phoneNumber
+  - contactType
+  - userId

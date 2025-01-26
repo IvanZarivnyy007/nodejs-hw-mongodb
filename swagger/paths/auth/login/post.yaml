@@ -47,8 +47,8 @@ responses:
                 accessToken:
                   type: string
                   description: Access token for the user
-                  example: "Hello Kitty"
+                  example: "vtrh35fx435ghyjtkbjb67"
                 refreshToken:
                   type: string
                   description: Refresh token for the user
-                  example: "Hello Kitty"
+                  example: "qweftrynmykyunbegbymjb"
